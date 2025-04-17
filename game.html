@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play with Nash</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+  <h1>Nash: What are you doing right now?</h1>
+  <select onchange="handleAnswer(this.value)">
+    <option disabled selected>Select</option>
+    <option value="a">I'm work hon</option>
+    <option value="b">Just chillin</option>
+    <option value="c">Why u ask?</option>
+  </select>
+  
+  <script>
+    
+    function handleAnswer(value) 
+    {
+      if (value === "a") window.location.href = "path_a.html";
+      if (value === "b") window.location.href = "path_b.html";
+      if (value === "c") window.location.href = "path_c.html";
+      // Further logic for other answers can be added later
+      
+    }
+  </script>
+</body>
+</html>

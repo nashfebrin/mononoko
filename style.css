@@ -1,0 +1,88 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Button Styles */
+button {
+  background: linear-gradient(145deg, #ff6666, #ff3333);
+  border: none;
+  color: white;
+  font-size: 1.2em;
+  padding: 15px 30px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* Text Animations */
+h1, p {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Dark Mood and Yandere Touch */
+h1 {
+  font-size: 3em;
+  color: #ff3366;
+}
+
+button, select {
+  font-size: 1.3em;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+select {
+  background: #444;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Fade-out effects for Yandere moments */
+.fade-in {
+  animation: fadeIn 3s ease-in-out;
+}
+.fade-out {
+  animation: fadeOut 3s ease-in-out;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Fake Chat Style */
+.chat-box {
+  background: #222;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 20px auto;
+  border: 2px solid #ff6666;
+}

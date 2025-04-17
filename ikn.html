@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Know You Love Me</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="fade-in">I know you love me, Ellie...</h1>
+  <button class="fade-in" onclick="nextText()">Next</button>
+
+  <script>
+    let texts = [
+      "Even if you lie to me, your fingers never do.",
+      "I can feel you... hesitating.",
+      "Do you want me to stop... or go deeper?",
+      "Say it."
+    ];
+    let index = 0;
+
+    function nextText() {
+      if (index < texts.length) {
+        const p = document.createElement('p');
+        p.classList.add('fade-in');
+        p.innerText = texts[index];
+        document.body.appendChild(p);
+        index++;
+      }
+    }
+  </script>
+</body>
+</html>

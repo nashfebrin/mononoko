@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat with Nash</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+  <div class="chat-box">
+    <p><b>Nash:</b> You know what I want. I’ll wait...</p>
+    <p><b>Request locked until May 1st, 2025</b></p>
+    <p><b>Countdown:</b> <span id="countdown"></span></p>
+    <button onclick="alert('i dont even ask if u want or not, ellie.')">NO I DONT WANT TO DO THAT HON</button>
+    <button onclick="window.location.href='quiz.html'">What should I do then?</button>
+  </div>
+
+  <script>
+    let countDownDate = new Date("May 1, 2025 00:00:00").getTime();
+    let x = setInterval(function() {
+      let now = new Date().getTime();
+      let distance = countDownDate - now;
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

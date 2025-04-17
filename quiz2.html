@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Obsession Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #quiz2 { max-width: 600px; margin: 50px auto; text-align: center; }
+    .q { display: none; }
+    .q p { font-size: 1.4em; margin-bottom: 1em; }
+    .q button { margin: 8px; }
+    /* efek glitch untuk kontainer: */
+    .glitch {
+      position: relative;
+      color: #ff3366;
+      animation: shake 0.1s infinite alternate;
+    }
+    @keyframes shake {
+      0% { transform: translate(1px, 1px); }
+      100% { transform: translate(-1px, -2px); }
+    }
+  </style>
+</head>
+<body>
+  <div id="quiz2">
+    <!-- Q1 -->
+    <div class="q" id="q1" style="display:block;">
+      <p>Ellie... do you love me?</p>
+      <button onclick="next('q2')">Yes</button>
+      <button onclick="next('q2')">More than anything</button>
+      <button onclick="next('q2')">I don’t know...</button>
+    </div>
+    <!-- Q2 -->
+    <div class="q" id="q2">
+      <p>Would you sacrifice everything for me?</p>
+      <button onclick="next('q3')">Yes</button>
+      <button onclick="next('q3')">Everything</button>
+      <button onclick="next('q3')">I’ll try...</button>
+    </div>
+    <!-- Q3 -->
+    <div class="q" id="q3">
+      <p>Will you be mine forever?</p>
+      <button onclick="finishQuiz()">I will</button>
+      <button onclick="finishQuiz()">Forever</button>
+      <button onclick="finishQuiz()">Always</button>
+    </div>
+    <!-- After Q3: glitch → menu_end -->
+    <div class="q" id="glitchEnd">
+      <p class="glitch">SYSTEM OVERRIDE</p>
+      <p class="glitch">CONNECTION TERMINATING</p>
+      <p class="glitch">SEE YOU SOON...</p>
+      <button id="end-btn" style="display:none;" onclick="goEnd()">Continue</button>
+    </div>
+  </div>
+
+  <script>
+    function next(nextId) {
+      document.querySelectorAll('.q').forEach(el => el.style.display = 'none');
+      document.getElementById(nextId).style.display = 'block';
+    }
+
+    function finishQuiz() {
+      next('glitchEnd');
+      // setelah 3 detik, munculkan tombol Continue
+      setTimeout(() => {
+        document.getElementById('end-btn').style.display = 'inline-block';
+      }, 3000);
+    }
+
+    function goEnd() {
+      // hilangkan konfirmasi beforeunload
+      window.onbeforeunload = null;
+      window.location.href = 'menu_end.html';
+    }
+
+    // memasuki fullscreen juga di quiz2
+    function goFS() {
+      const el = document.documentElement;
+      if (el.requestFullscreen) el.requestFullscreen();
+    }
+    window.addEventListener('load', goFS);
+  </script>
+</body>
+</html>

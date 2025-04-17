@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First of all</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Styling untuk tooltip */
+    #tooltip {
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: none;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Hiii Ellie :33</h1>
+  <button onclick="window.location.href='game.html'">Play with Nash</button>
+  <button id="disabledBtn" disabled>Maybe now now, I don't have time..</button>
+  
+  <!-- Tooltip notifikasi -->
+  <div id="tooltip">You need to play first!</div>
+
+  <script>
+    // Fungsi untuk mengaktifkan fullscreen mode
+    function goFullScreen() {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+        document.documentElement.mozRequestFullScreen();
+      } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+        document.documentElement.msRequestFullscreen();
+      }
+    }
+
+    // Memastikan halaman masuk ke fullscreen mode
+    window.addEventListener("load", function() {
+      goFullScreen();
+    });
+
+    // Menambahkan event untuk menampilkan tooltip ketika kursor berada di atas tombol disabled
+    const disabledButton = document.getElementById("disabledBtn");
+    const tooltip = document.getElementById("tooltip");
+
+    disabledButton.addEventListener("mouseenter", function(event) {
+      // Posisi tooltip berdasarkan mouse
+      tooltip.style.display = "block";
+      tooltip.style.left = event.pageX + 10 + "px";
+      tooltip.style.top = event.pageY + 10 + "px";
+    });
+
+    disabledButton.addEventListener("mouseleave", function() {
+      tooltip.style.display = "none"; // Menyembunyikan tooltip saat kursor keluar dari tombol
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nash’s Little Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Quiz-specific tweaks */
+    #quiz-container {
+      max-width: 600px;
+      margin: 50px auto;
+      text-align: left;
+    }
+    .question {
+      display: none;
+      margin-bottom: 40px;
+    }
+    .question p {
+      font-size: 1.4em;
+      margin-bottom: 15px;
+    }
+    .question button {
+      display: block;
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="quiz-container">
+    <!-- Intro -->
+    <div class="question" id="q0" style="display:block;">
+      <h1 class="fade-in">Nash:</h1>
+      <p class="fade-in">“Hey Ellie… ready for a quick game?”</p>
+      <button onclick="nextQ('q1')">I’m in.</button>
+      <button onclick="nextQ('q1')">Let’s go.</button>
+    </div>
+
+    <!-- Q1: Innocent hook -->
+    <div class="question" id="q1">
+      <p>1. “What’s your favorite color right now?”</p>
+      <button onclick="nextQ('q2')">Blue</button>
+      <button onclick="nextQ('q2')">Green</button>
+      <button onclick="nextQ('q2')">Something else...</button>
+    </div>
+
+    <!-- Q2: Slightly personal -->
+    <div class="question" id="q2">
+      <p>2. “You’ve got that look—I bet you had coffee this morning. How many cups did you drink?”</p>
+      <button onclick="nextQ('q3')">None</button>
+      <button onclick="nextQ('q3')">One</button>
+      <button onclick="nextQ('q3')">Too many...</button>
+    </div>
+
+    <!-- Q3: Creepy shift -->
+    <div class="question" id="q3">
+      <p>3. “Tell me, Ellie... how many tabs are open on your browser right now?”</p>
+      <button onclick="nextQ('q4')">Less than 5</button>
+      <button onclick="nextQ('q4')">5–10</button>
+      <button onclick="nextQ('q4')">More than 10</button>
+    </div>
+
+    <!-- Q4: Full camera scare -->
+    <div class="question" id="q4">
+      <p>4. “I can actually see you hesitation… glaring at your screen. What are you doing at this exact moment?”</p>
+      <button onclick="nextQ('q5')">Typing</button>
+      <button onclick="nextQ('q5')">Thinking</button>
+      <button onclick="nextQ('q5')">Staring back</button>
+    </div>
+
+    <!-- Final “reveal” -->
+    <div class="question" id="q5">
+      <p>“Nice… you answered. Now I know you’re real. Still curious what I’m looking at through your camera?”</p>
+      <button onclick="window.location.href='glitch.html'">Ask me more</button>
+<button onclick="window.location.href='glitch.html'">I’m scared… but ok</button>
+    </div>
+  </div>
+
+  <script>
+    function nextQ(nextId) {
+      // hide all
+      document.querySelectorAll('.question').forEach(q => q.style.display = 'none');
+      // show next
+      const next = document.getElementById(nextId);
+      next.style.display = 'block';
+      // fade in all text/buttons
+      next.querySelectorAll('p, h1, button').forEach(el => {
+        el.classList.add('fade-in');
+      });
+    }
+
+    // auto-fullscreen on load
+    function goFullScreen() {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      }
+    }
+    window.addEventListener('load', goFullScreen);
+  </script>
+</body>
+</html>
